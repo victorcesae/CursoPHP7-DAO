@@ -20,7 +20,9 @@ require_once("config.php");
 //$usuario = new Usuario();
 //$usuario->login("Joao","1234");
 //echo $usuario;
-/*Criando um novo usuário
+
+/*
+//Criando um novo usuário
 $aluno = new Usuario ();
 $aluno->setDeslogin("aluno");
 $aluno->setDessenha("@alun0");
@@ -28,8 +30,19 @@ $aluno->setDessenha("@alun0");
 $aluno->insert();
 
 echo $aluno;*/
-$usuario = new Usuario();
-$usuario->loadByID(2);
+//Alterar um usuario
+/*$usuario = new Usuario();
+$usuario->loadById(2);
 $usuario->update("professor","!aspdkijnoas");
+echo $usuario;
+*/
+
+/*
+//Excluindo usuario
+$usuario = new Usuario();
+$usuario->loadById(2);
+$usuario->delete();
+echo $usuario;
+*/
 
 ?>
