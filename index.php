@@ -20,6 +20,16 @@ require_once("config.php");
 //$usuario = new Usuario();
 //$usuario->login("Joao","1234");
 //echo $usuario;
+/*Criando um novo usuário
+$aluno = new Usuario ();
+$aluno->setDeslogin("aluno");
+$aluno->setDessenha("@alun0");
 
+$aluno->insert();
+
+echo $aluno;*/
+$usuario = new Usuario();
+$usuario->loadByID(2);
+$usuario->update("professor","!aspdkijnoas");
 
 ?>
