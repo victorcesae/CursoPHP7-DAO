@@ -48,11 +48,7 @@ class Usuario{
             ":ID"=>$id
         ));
         if (count($result) > 0) {
-            $raw = $result[0];
-            $this->setIdusuario($raw['idusuario']);
-            $this->setDeslogin($raw['deslogin']);
-            $this->setDessenha($raw['dessenha']);
-            $this->setDtcadastro(new DateTime($raw['dtcadastro']));
+            $this->setData($result[0]);
         }
     }
 
@@ -77,13 +73,30 @@ class Usuario{
             ':PASSWORD'=>$password
         ));
         if (count($result) > 0) {
-            $raw = $result[0];
-            $this->setIdusuario($raw['idusuario']);
-            $this->setDeslogin($raw['deslogin']);
-            $this->setDessenha($raw['dessenha']);
-            $this->setDtcadastro(new DateTime($raw['dtcadastro']));
+
+            $this->setData($result[0]);
         }else{
             throw new Exception("Login e/ou senha inválidos.");
+        }
+    }
+
+    public function setData($data)
+    {
+            $this->setIdusuario($data['idusuario']);
+            $this->setDeslogin($data['deslogin']);
+            $this->setDessenha($data['dessenha']);
+            $this->setDtcadastro(new DateTime($data['dtcadastro']));
+    }
+
+    public function insert()
+    {
+        $sql = new Sql();
+        $results = $sql->select("CALL sp_usuarios_insert(:LOGIN, :PASSWORD", array(
+            ':LOGIN'=>$this->getDeslogin(),
+            ':PASSWORD'=>$this->getDessenha()
+        ));
+        if (count ($results) > 0) {
+            $this->setData($result[0]);
         }
     }
 
